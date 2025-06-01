@@ -7,12 +7,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -22,15 +22,11 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -54,7 +50,6 @@ import androidx.navigation.compose.rememberNavController
 import com.vdemelo.preparamais.ui.home.OrangeGradientEnd
 import com.vdemelo.preparamais.ui.home.OrangeGradientStart
 
-val LightBlueBackground = Color(0xFFE3F2FD)
 val OrangeButton = Color(0xFFFFA726)
 val TextFieldBackground = Color(0xFFE8F5FE)
 val SwitchTrackColor = Color(0xFFFFCC80)
@@ -97,6 +92,7 @@ fun PersonalizationHeader(
                         endY = 300f
                     )
                 )
+                .statusBarsPadding()
         ) {
             Row(
                 modifier = Modifier.padding(16.dp),
@@ -399,120 +395,6 @@ fun DateInputField(
         )
     }
 }
-
-// Alternative implementation with more Material 3 styling
-@Composable
-fun PersonalizationFormScreen(
-    onBackClick: () -> Unit = {},
-    onGenerateRecommendations: () -> Unit = {},
-    modifier: Modifier = Modifier
-) {
-    var hasAnimals by remember { mutableStateOf(true) }
-    var hasMobilityIssues by remember { mutableStateOf(false) }
-    var livingType by remember { mutableStateOf("Apartamento") }
-    var peopleCount by remember { mutableStateOf("4+") }
-    var birthDate by remember { mutableStateOf("") }
-
-    Scaffold(
-        topBar = {
-            // Add your top bar here if needed
-        },
-        containerColor = Color.White
-    ) { paddingValues ->
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
-                .padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)
-        ) {
-            // Form items with cards for better visual separation
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.White
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 0.dp
-                )
-            ) {
-                Column(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    QuestionToggle(
-                        question = "Você tem animais de estimação em casa?",
-                        isChecked = hasAnimals,
-                        onCheckedChange = { hasAnimals = it }
-                    )
-
-                    Divider(color = Color.Gray.copy(alpha = 0.2f))
-
-                    QuestionToggle(
-                        question = "Você possui mobilidade reduzida ou deficiência?",
-                        isChecked = hasMobilityIssues,
-                        onCheckedChange = { hasMobilityIssues = it }
-                    )
-                }
-            }
-
-            QuestionSection(
-                question = "Onde Você Mora Atualmente?"
-            ) {
-                DropdownField(
-                    value = livingType,
-                    onValueChange = { livingType = it },
-                    options = listOf("Apartamento", "Casa", "Condomínio", "Outro")
-                )
-            }
-
-            QuestionSection(
-                question = "Quantas Pessoas Moram Com Você?"
-            ) {
-                DropdownField(
-                    value = peopleCount,
-                    onValueChange = { peopleCount = it },
-                    options = listOf("Moro sozinho", "1", "2", "3", "4+")
-                )
-            }
-
-            QuestionSection(
-                question = "Data De Nascimento"
-            ) {
-                DateInputField(
-                    value = birthDate,
-                    onValueChange = { birthDate = it }
-                )
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Button(
-                onClick = onGenerateRecommendations,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                shape = RoundedCornerShape(28.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = OrangeButton,
-                    contentColor = Color.White
-                ),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 4.dp,
-                    pressedElevation = 8.dp
-                )
-            ) {
-                Text(
-                    text = "Gerar recomendações",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
-        }
-    }
-}
-
 
 @Preview(showBackground = true, widthDp = 320, heightDp = 640)
 @Composable
