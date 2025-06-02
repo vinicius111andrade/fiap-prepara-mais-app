@@ -246,7 +246,8 @@ fun NavTilesGrid(
             NavTile(
                 title = "Inundação",
                 icon = { WaterDropIcon(Modifier.size(48.dp)) },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(NavRoutes.PERSONALIZATION) }
             )
         }
 
@@ -264,7 +265,8 @@ fun NavTilesGrid(
                         tint = Color.White
                     )
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(NavRoutes.PERSONALIZATION) }
             )
 
             NavTile(
@@ -278,7 +280,8 @@ fun NavTilesGrid(
                         tint = Color.White
                     )
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(NavRoutes.PERSONALIZATION) }
             )
         }
 
@@ -296,7 +299,8 @@ fun NavTilesGrid(
                         tint = Color.White
                     )
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(NavRoutes.PERSONALIZATION) }
             )
 
             NavTile(
@@ -305,7 +309,8 @@ fun NavTilesGrid(
                 icon = {
                     ThermometerIcon(Modifier.size(48.dp))
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(NavRoutes.PERSONALIZATION) }
             )
         }
     }
@@ -332,11 +337,7 @@ fun NavTile(
                     colors = listOf(OrangeGradientStart, OrangeGradientEnd)
                 )
             )
-            .clickable {
-                onClick()
-                Log.d("NavTile", "clicked")
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
-            },
+            .clickable { onClick() },
     ) {
         icon()
         Spacer(modifier = Modifier.height(12.dp))

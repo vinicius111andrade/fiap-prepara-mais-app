@@ -90,6 +90,7 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
+    testImplementation(libs.junit)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.runner)
