@@ -7,7 +7,7 @@ Rodrigo José Galvão Calado - RM 98270
 Vinícius de Melo Andrade - RM 550959
 
 Descrição:
-Aqui temos um MVP demonstrando como seria o nosso app e como os usuários iriam inserir suas informações para que possamos instruí-los quanto ao preparo contra eventos climáticos e desastres. No nosso MVP você pode visualizar a Home do aplicatio e navegar para uma tela de cadastro clicando em qualquer uma das tiles.
+O Prepara+ é um aplicativo educacional e interativo voltado à preparação da população para desastres. Em uma interface semelhante a plataformas de streaming, o usuário escolhe o tipo de evento que deseja entender e acessar conteúdos educativos, dinâmicos e adaptados ao seu perfil (por exemplo: com ou sem pets, idosos em casa, crianças, etc.). Aqui temos um MVP demonstrando como seria o nosso app e como os usuários iriam inserir suas informações para que possamos instruí-los quanto ao preparo contra eventos climáticos e desastres. No nosso MVP você pode visualizar a Home do aplicatio e navegar para uma tela de cadastro clicando em qualquer uma das tiles.
 
 Tecnologias utilizadas:
 - Kotlin
